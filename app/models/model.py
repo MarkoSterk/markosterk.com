@@ -36,7 +36,7 @@ class Model:
 
 
     def insertDefaults(Schema, modelData):
-        for key in Schema.keys():
+        for key in Schema:
             if(('default' in Schema[key])
                 and (key not in modelData)):
                 if callable(Schema[key]['default']):
