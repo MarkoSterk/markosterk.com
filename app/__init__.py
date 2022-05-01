@@ -4,7 +4,6 @@ from flask_cors import CORS
 from flask_pymongo import PyMongo
 from flask_compress import Compress
 from flask_share import Share
-import os
 from werkzeug.exceptions import default_exceptions
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
