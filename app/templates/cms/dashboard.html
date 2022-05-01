@@ -1,0 +1,19 @@
+{% extends 'cms/dashboardBase.html' %}
+
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<div class="col-md-8 col-lg-9 content-column">
+  <div class="small-navbar d-flex d-md-none">
+    <button type="button" data-toggle="offcanvas" class="btn btn-outline-primary"> <i class="fa fa-align-left mr-2"></i>Menu</button>
+    <h1 class="small-navbar-heading"> <a href="/cms/dashboard">Dashboard </a></h1>
+  </div>
+  <h5>Dashboard//All Posts</h5>
+  <div class="grid row h-auto" id="postsContainer">
+    
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/infiniteLoad.js') }}"></script>
+<script>
+    getPosts();
+</script>
+{% endblock %}

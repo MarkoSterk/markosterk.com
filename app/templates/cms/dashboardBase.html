@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+</html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  {% if title %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>Dashboard</title>
+  {% endif %}
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+  <!-- Font Awesome CSS-->
+  <script src="https://kit.fontawesome.com/812455c4ce.js" crossorigin="anonymous"></script>
+  <!-- Google fonts - Roboto-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+  <!-- owl carousel-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/owl.carousel/assets/owl.carousel.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/owl.carousel/assets/owl.theme.default.css') }}">
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.default.css') }}" id="theme-stylesheet">
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="all">
+    <div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-left"> 
+        <!--   *** SIDEBAR ***-->
+        <div id="sidebar" class="col-md-4 col-lg-3 sidebar-offcanvas">
+          
+          <div class="sidebar-content">
+            
+            <div style="text-align: center;">
+              <h1 class="sidebar-heading"> <a href="/cms/dashboard">Dashboard</a></h1>
+              <img class="image rounded-circle img-fluidstyle" src="{{ url_for('static', filename='img/markoS.jpg') }}">
+            </div>
+            <ul class="sidebar-menu">
+                <!-- Link-->
+                <li class="sidebar-item"><a href="/" class="sidebar-link">To Web Site</a></li>
+                <!-- Link-->
+                <li class="sidebar-item"><a href="/cms/dashboard" class="sidebar-link">Dashboard</a></li>
+                <!-- Link-->
+                <li class="sidebar-item"><a href="/cms/addPost" class="sidebar-link">Add Post</a></li>
+                <!-- Link-->
+                <li class="sidebar-item"><a href="#" class="sidebar-link" id="logoutBtn">Log out</a></li>
+            </ul>
+            <div class="copyright text-center text-md-left">
+              <p class="credit">&copy;2022 Marko Šterk</p>
+            </div>
+          </div>
+        </div>
+        <!--   *** SIDEBAR END ***  -->
+        <!--   *** main content ***-->
+        {% block content %}
+
+        {% endblock content %}
+        <!--   *** main content end ***-->
+      </div>
+    </div>
+  </div>
+  <!-- JavaScript files-->
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/popperJS/umd/popper.min.js') }}"> </script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+  <!-- <script src="{{ url_for('static', filename='vendor/jquery.cookie/jquery.cookie.js') }}"> </script> -->
+  <!-- <script src="{{ url_for('static', filename='vendor/owl.carousel/owl.carousel.min.js') }}"></script> -->
+  <script src="{{ url_for('static', filename='vendor/masonry-layout/masonry.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/front.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>

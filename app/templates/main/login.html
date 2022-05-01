@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-lg-8">
+    <div class="content-column-content">
+      <h5>Login to Dashboard</h5>
+      <form id="login-form" class="contact-form form">
+        <div class="controls">
+          <div class="form-group">
+            <label for="email">Your email *</label>
+            <input type="email" name="email" id="email" required="required" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="password">Password *</label>
+            <input type="password" name="password" id="password" required="required" class="form-control">
+          </div>
+          <div>
+            <input type="button" value="Login" class="btn btn-outline-primary" id="loginBtn">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="module" src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock %}

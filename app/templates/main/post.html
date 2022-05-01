@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-xl-10">
+    <div class="content-column-content">
+      {% if post.coverImage %}
+        <img src="{{ url_for('static', filename='images/covers/') + post.coverImage[0] }}">
+      {% endif %}
+      <h2>{{ post.title }}</h2>
+      <p class="lead">Posted by: {{ post.authorName }}, {{ post._createdAt }}</p>
+      <p>{{ post.text | safe }}</p>
+    </div>
+    {{ share.create(title='Share with: ', sites='facebook, twitter, linkedin', mobile_sites='facebook, twitter, linkedin') }}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h5>Search results</h5>
+<div class="grid row h-auto" id="postsContainer">
+  
+</div>
+<script src="{{ url_for('static', filename='js/loadSearch.js') }}"></script>
+<script>
+    getSearchQuery();
+</script>
+{% endblock %}

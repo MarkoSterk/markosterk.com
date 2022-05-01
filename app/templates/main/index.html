@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="row h-auto" id="postsContainer">
+  
+</div>
+<script src="{{ url_for('static', filename='js/infiniteLoad.js') }}"></script>
+<script>
+    getPosts()
+</script>
+{% endblock %}

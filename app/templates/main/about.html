@@ -1,0 +1,59 @@
+{% extends 'main/base.html' %}
+
+{% block content%}
+<div class="row">
+  <div class="col-xl-10">
+    <div class="content-column-content">
+      <h1>About me</h1>
+      <p class="lead">
+        I am a PhD candidate and researcher at the University of Maribor in Maribor, Slovenia. My research is focused on 
+        the modeling of cellular processes, time series and statistical analysis, complex systems, and networks, with an 
+        emphasis on calcium wave propagation in cellular networks. Part of my research effort is also focused on the 
+        development of new and efficient algorithms for calcium wave detection and characterisation with special attention 
+        given to the roles of individual cells in the network.
+      </p>
+      <div class="row">
+        <div class="col-lg-8">
+          <p class="lead">
+            Another passion is related to the web development. I am primarily focused on back-end web development in Python (Flask) 
+            and Node.JS (express), however, I have experience with other frameworks, e.g. Django and FastAPI. My background in physics 
+            has given me the necessary analytical skills for development and troubleshooting of web applications.
+          </p>
+          <div class="skill-item">
+            <div class="progress-title">Python</div>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"><span class="sr-only">60</span></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="progress-title">Javascript</div>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"><span class="sr-only">70</span></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="progress-title">Data Analysis</div>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"><span class="sr-only">80</span></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="progress-title">Data Visualization</div>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"><span class="sr-only">70</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <p><img src="{{ url_for('static', filename='img/markoS1.jpg') }}" alt="My Photo" class="image rounded-circle img-fluid"></p>
+        </div>
+      </div>
+      <p>
+        Besides research and web development, I am also interested in electronics and PCB design, hiking, travelling and cats :D I am a 
+        cat dad to three awesome cats (Hubert, Hedvika, and Ove) who always brighten up my days and help me relax when things get tough!
+      </p>
+      <p>For more information about me have a look at my <a href="/resume">resume</a> or <a href="/contact">contact me</a>.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

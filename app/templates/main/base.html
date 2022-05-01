@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+</html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  {% if title %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>MarkoSterk.com</title>
+  {% endif %}
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <!--axios library-->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+  <!-- Font Awesome CSS-->
+  <script src="https://kit.fontawesome.com/812455c4ce.js" crossorigin="anonymous"></script>
+  <!-- Google fonts - Roboto-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+  <!-- owl carousel-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/owl.carousel/assets/owl.carousel.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/owl.carousel/assets/owl.theme.default.css') }}">
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.default.css') }}" id="theme-stylesheet">
+  <!-- Favicon-->
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}">
+  {{ share.load() }}
+</head>
+<body>
+  <div id="all">
+    <div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-left"> 
+        <!--   *** SIDEBAR ***-->
+        <div id="sidebar" class="col-md-4 col-lg-3 sidebar-offcanvas">
+          
+          <div class="sidebar-content">
+            
+            <div style="text-align: center;">
+              <h1 class="sidebar-heading"> <a href="/">MarkoSterk.com</a></h1>
+              <img class="image rounded-circle img-fluidstyle" src="{{ url_for('static', filename='img/markoS.jpg') }}">
+              <p class="sidebar-p">Researcher, web developer and cat lover <i class="fas fa-cat"></i><i class="fas fa-cat"></i><i class="fas fa-cat"></i></p>
+            </div>
+            <ul class="sidebar-menu">
+                <!-- Link-->
+                <li class="sidebar-item"><a href="/" class="sidebar-link">Home</a></li>
+                <!-- Link-->
+                <li class="sidebar-item"><a href="/about" class="sidebar-link">About</a></li>
+                <!-- Link-->
+                <li class="sidebar-item"><a href="/resume" class="sidebar-link">Resume</a></li>
+                <!-- Link -->
+                <li class="sidebar-item"><a href="/contact" class="sidebar-link">Get in touch</a></li>
+            </ul>
+            <p class="social">
+              <a target="_blank" href="https://www.linkedin.com/in/marko-%C5%A1terk-ab323a204/" class="external"><i class="fa fa-linkedin"></i></a>
+              <a target="_blank" href="https://github.com/MarkoSterk" class="external"><i class="fa fa-github"></i></a>
+              <a target="_blank" href="https://www.facebook.com/marko.sterk" class="external"><i class="fa fa-facebook"></i></a>
+              <a target="_blank" href="https://www.instagram.com/marko_sterk/" class="external"><i class="fa fa-instagram"></i></a>
+              <a href="mailto:marko_sterk@hotmail.com" class="email"><i class="fa fa-envelope"></i></a>
+            </p>
+            <div class="form-outline">
+              <input type="search" id="searchBar" class="form-control" placeholder="Search..." aria-label="Search" />
+            </div>
+            <div class="copyright text-center text-md-left">
+              <br>
+              <p class="credit">&copy;2022 Marko Šterk</p>
+            </div>
+          </div>
+        </div>
+        <!--   *** SIDEBAR END ***  -->
+        <!--   *** main content ***-->
+        <div class="col-md-8 col-lg-9 content-column {% if not error %}{% if url_for(request.endpoint, **request.view_args) != '/'%} white-background {% endif %}{% endif %}">
+          <div class="small-navbar d-flex d-md-none">
+            <button type="button" data-toggle="offcanvas" class="btn btn-outline-primary"> <i class="fa fa-align-left mr-2"></i>Menu</button>
+            <h1 class="small-navbar-heading"> <a href="/">MarkoSterk.com </a></h1>
+          </div>
+          {% block content %}
+
+          {% endblock %}
+        </div>
+        <!--   *** main content end ***-->
+      </div>
+    </div>
+  </div>
+  <!-- JavaScript files-->
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/popperJS/umd/popper.min.js') }}"> </script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+  <!-- <script src="{{ url_for('static', filename='vendor/jquery.cookie/jquery.cookie.js') }}"> </script> -->
+  <!-- <script src="{{ url_for('static', filename='vendor/owl.carousel/owl.carousel.min.js') }}"></script> -->
+  <!-- <script src="{{ url_for('static', filename='vendor/masonry-layout/masonry.pkgd.min.js') }}"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.min.js" integrity="sha512-coKEwkkVJR6lO1aL/rJeVFojNKG1DRNbAfuxcvFC98W9TYBO9TQIVFXiHBBx6dRL9+effSNEYIr/5vLe5HENVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="{{ url_for('static', filename='js/front.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+</body>
