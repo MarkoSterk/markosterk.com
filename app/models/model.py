@@ -1,4 +1,4 @@
-from flask import abort, jsonify
+from flask import abort, jsonify, Response
 from datetime import datetime
 import secrets
 from copy import deepcopy
@@ -105,7 +105,8 @@ class Model:
             validationErrors=Model.checkUnique(self, Schema, modelData, validationErrors)
         validationErrors=Model.checkValidators(Schema, modelData, validationErrors)
         
-        if len(validationErrors)>0: return Model.ModelError('Validation error', validationErrors, 400)
+        if len(validationErrors)>0: 
+            return Model.ModelError('Validation error', validationErrors, 400)
         return True
     
 
@@ -141,31 +142,29 @@ class Model:
 
     def update(self, data, onLoad=True, pre_hooks=None):
         newSelf = deepcopy(self)
-        
         newSelf = Model.updateAttributes(newSelf, newSelf.Schema, data)
-
         if newSelf.validate(newSelf.Schema, vars(newSelf), onLoad=onLoad):
             self = Model.updateAttributes(self, self.Schema, data)
-            
+
             if pre_hooks is None:
                 pre_hooks=[]
             for func in pre_hooks:
-                print(f'Executing {func.__name__}')
                 self = func()
             
             self.session[self.collection].replace_one({'_id': self._id}, vars(self))
     
     def populate(self, populateData=None):
-        data = populateData['model'].findOne({'_id': getattr(self, populateData['field'])})
+        try:
+            data = populateData['model'].findOne({'_id': getattr(self, populateData['field'])})
 
-        if populateData is None:
-            populateData={}
-        for key in populateData['hideFields']:
-            if key in vars(data):
-                delattr(data, key)
-        
-        setattr(self, populateData['field'], vars(data))
-        return self
+            for key in populateData['hideFields']:
+                if key in vars(data):
+                    delattr(data, key)
+            
+            setattr(self, populateData['field'], vars(data))
+            return self
+        except:
+            return self
 
 
     ##########################################################################################
@@ -173,13 +172,12 @@ class Model:
     ##########################################################################################
     @classmethod
     def ModelError(cls, errorType, validationErrors, statusCode):
-        response = jsonify({
+        response = {
         'status': errorType,
         'message': validationErrors,
         'code': statusCode
-        })
-        response.status_code = statusCode
-        return abort(response)
+        }
+        return abort(statusCode, response)
 
     @classmethod
     def filterData(cls, data):

@@ -11,14 +11,12 @@ handle_error: overrides the default error responses for all exception codes.
 
 ##function for raising exceptions when needed.
 def AppError(msg, statusCode):
-    #response = 
-    return jsonify({
+    response = jsonify({
         'status': 'error',
         'message': msg,
         'code': statusCode
         })
-    #response.status_code = statusCode
-    #return abort(response)
+    return response, statusCode
 
 
 ###function for exception handling
