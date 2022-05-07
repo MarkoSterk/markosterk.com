@@ -1,10 +1,10 @@
-from slugify import slugify
 from app import mongo
 from xmlrpc.client import Boolean
 from .validator import Validator
 from .model import Model
-from ..controllers.errorController import AppError
 import secrets
+from slugify import slugify
+from datetime import datetime
 
 
 class Post(Model):
@@ -24,7 +24,7 @@ class Post(Model):
             'type': list,
             'validators': [
                 (Validator.checkElementsType, (str)),
-                (Validator.allowedListElements, ['Blog', "Science"])
+                (Validator.allowedListElements, ['Blog', 'Science', 'News', 'Media'])
             ],
             'required': True,
             'default': ['Blog']
@@ -37,11 +37,8 @@ class Post(Model):
             'required': True
         },
         'coverImage': {
-            'type': list,
-            'required': False,
-            'validators': [
-                (Validator.checkElementsType, str)
-            ]
+            'type': str,
+            'required': False
         },
         'slug': {
             'type': str,
@@ -70,8 +67,6 @@ class Post(Model):
         #super().__init__(user)
         Model.__init__(self, data, validate=validate, onLoad=onLoad)
     
-
     def slugify(self):
         self.slug = secrets.token_hex(1) + '-' + slugify(getattr(self, 'title'))
         return self
-        
