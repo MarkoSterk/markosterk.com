@@ -33,6 +33,12 @@ class Validator:
             if elem not in allowedList:
                 return False
         return True
+    
+    @staticmethod
+    def inList(fieldname, modelData, allowedList):
+        if modelData[fieldname] in allowedList:
+            return True
+        return False
 
 
     @staticmethod
